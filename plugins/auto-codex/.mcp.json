@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "auto_codex_stage_skill": {
+      "command": "python",
+      "args": [
+        "./scripts/mcp_stage_skill.py"
+      ]
+    }
+  }
+}

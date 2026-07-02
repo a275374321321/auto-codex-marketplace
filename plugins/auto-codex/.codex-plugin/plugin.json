@@ -1,0 +1,22 @@
+{
+  "name": "auto-codex",
+  "version": "0.2.0",
+  "description": "Self-learning skill maintenance layer for Codex projects.",
+  "author": {
+    "name": "Auto Codex"
+  },
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Auto Codex",
+    "shortDescription": "Learn reusable Codex skills from project sessions.",
+    "longDescription": "Auto Codex packages adaptive project skills and a deterministic local harness for syncing Codex history, staging learning intents, promoting self-authored skills, and pruning unused learned skills.",
+    "developerName": "Auto Codex",
+    "category": "Productivity",
+    "capabilities": [
+      "Skills",
+      "Automation"
+    ],
+    "defaultPrompt": "Sync recent project learning with Auto Codex."
+  }
+}

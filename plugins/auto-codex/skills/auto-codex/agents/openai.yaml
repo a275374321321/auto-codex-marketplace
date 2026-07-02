@@ -1,0 +1,4 @@
+interface:
+  display_name: "Auto Codex"
+  short_description: "Automatic Codex skill learning"
+  default_prompt: "Use $auto-codex to sync project history and distill durable Codex skill updates."

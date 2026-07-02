@@ -1,0 +1,59 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear|compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python ./scripts/hook_dispatcher.py",
+            "commandWindows": "python .\\scripts\\hook_dispatcher.py",
+            "timeout": 120,
+            "statusMessage": "Auto Codex is syncing learned project context"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python ./scripts/hook_dispatcher.py",
+            "commandWindows": "python .\\scripts\\hook_dispatcher.py",
+            "timeout": 120,
+            "statusMessage": "Auto Codex is updating learning bundles"
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "matcher": "manual|auto",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python ./scripts/hook_dispatcher.py",
+            "commandWindows": "python .\\scripts\\hook_dispatcher.py",
+            "timeout": 120,
+            "statusMessage": "Auto Codex is preserving learning context"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Skill|skill|.*skill.*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python ./scripts/hook_dispatcher.py",
+            "commandWindows": "python .\\scripts\\hook_dispatcher.py",
+            "timeout": 30,
+            "statusMessage": "Auto Codex is recording skill usage"
+          }
+        ]
+      }
+    ]
+  }
+}
