@@ -9,7 +9,7 @@
             "command": "python ./scripts/hook_dispatcher.py",
             "commandWindows": "python .\\scripts\\hook_dispatcher.py",
             "timeout": 120,
-            "statusMessage": "Auto Codex is syncing learned project context"
+            "statusMessage": "Codenomous is syncing learned project context"
           }
         ]
       }
@@ -22,7 +22,7 @@
             "command": "python ./scripts/hook_dispatcher.py",
             "commandWindows": "python .\\scripts\\hook_dispatcher.py",
             "timeout": 120,
-            "statusMessage": "Auto Codex is updating learning bundles"
+            "statusMessage": "Codenomous is updating learning bundles"
           }
         ]
       }
@@ -36,7 +36,7 @@
             "command": "python ./scripts/hook_dispatcher.py",
             "commandWindows": "python .\\scripts\\hook_dispatcher.py",
             "timeout": 120,
-            "statusMessage": "Auto Codex is preserving learning context"
+            "statusMessage": "Codenomous is preserving learning context"
           }
         ]
       }
@@ -50,7 +50,7 @@
             "command": "python ./scripts/hook_dispatcher.py",
             "commandWindows": "python .\\scripts\\hook_dispatcher.py",
             "timeout": 30,
-            "statusMessage": "Auto Codex is recording skill usage"
+            "statusMessage": "Codenomous is recording skill usage"
           }
         ]
       }

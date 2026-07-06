@@ -1,5 +1,5 @@
 {
-  "name": "auto-codex",
+  "name": "codenomous",
   "version": "0.2.1",
   "description": "Self-learning skill maintenance layer for Codex projects.",
   "author": {
@@ -8,15 +8,15 @@
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
   "interface": {
-    "displayName": "Auto Codex",
+    "displayName": "Codenomous",
     "shortDescription": "Learn reusable Codex skills from project sessions.",
-    "longDescription": "Auto Codex packages adaptive project skills and a deterministic local harness for syncing Codex history, staging learning intents, promoting self-authored skills, and pruning unused learned skills.",
+    "longDescription": "Codenomous packages adaptive project skills and a deterministic local harness for syncing Codex history, staging learning intents, promoting self-authored skills, and pruning unused learned skills.",
     "developerName": "GigaAL Lab",
     "category": "Productivity",
     "capabilities": [
       "Skills",
       "Automation"
     ],
-    "defaultPrompt": "Sync recent project learning with Auto Codex."
+    "defaultPrompt": "Sync recent project learning with Codenomous."
   }
 }

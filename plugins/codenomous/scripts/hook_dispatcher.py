@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Codex lifecycle hooks for Auto Codex.
+"""Codex lifecycle hooks for Codenomous.
 
 The hook layer is deliberately thin: it observes sessions and invokes the
-deterministic Auto Codex writer. It never writes skills directly.
+deterministic Codenomous writer. It never writes skills directly.
 """
 from __future__ import annotations
 
@@ -26,8 +26,8 @@ def _plugin_root() -> Path:
     return Path(__file__).resolve().parents[1]
 
 
-def _auto_codex_script() -> Path:
-    return _plugin_root() / "skills" / "auto-codex" / "scripts" / "auto_codex.py"
+def _codenomous_script() -> Path:
+    return _plugin_root() / "skills" / "codenomous" / "scripts" / "codenomous.py"
 
 
 def _project_root() -> Path:
@@ -39,7 +39,7 @@ def _global_root() -> Path:
 
 
 def _state_path() -> Path:
-    return _project_root() / "auto-codex" / "hook_state.json"
+    return _project_root() / "codenomous" / "hook_state.json"
 
 
 def _read_json(path: Path, default):
@@ -66,10 +66,10 @@ def _int_env(name: str, default: int) -> int:
         return default
 
 
-def _run_auto_codex(*args: str) -> dict:
+def _run_codenomous(*args: str) -> dict:
     cmd = [
         sys.executable,
-        str(_auto_codex_script()),
+        str(_codenomous_script()),
         *args,
         "--project-root",
         str(_project_root()),
@@ -95,9 +95,9 @@ def _run_auto_codex(*args: str) -> dict:
 
 
 def _sync(reason: str, *, small: bool) -> dict:
-    max_sessions = _int_env("AUTO_CODEX_MAX_SESSIONS", DEFAULT_MAX_SESSIONS)
-    max_chars = _int_env("AUTO_CODEX_MAX_CHARS", DEFAULT_MAX_CHARS)
-    days = _int_env("AUTO_CODEX_SYNC_DAYS", DEFAULT_SYNC_DAYS)
+    max_sessions = _int_env("CODENOMOUS_MAX_SESSIONS", DEFAULT_MAX_SESSIONS)
+    max_chars = _int_env("CODENOMOUS_MAX_CHARS", DEFAULT_MAX_CHARS)
+    days = _int_env("CODENOMOUS_SYNC_DAYS", DEFAULT_SYNC_DAYS)
     if small:
         max_sessions = min(max_sessions, 4)
         max_chars = min(max_chars, 12000)
@@ -110,15 +110,15 @@ def _sync(reason: str, *, small: bool) -> dict:
         "--max-chars",
         str(max_chars),
     ]
-    if os.environ.get("AUTO_CODEX_ALL_PROJECTS") in {"1", "true", "TRUE", "yes", "YES"}:
+    if os.environ.get("CODENOMOUS_ALL_PROJECTS") in {"1", "true", "TRUE", "yes", "YES"}:
         args.append("--all-projects")
-    result = _run_auto_codex(*args)
+    result = _run_codenomous(*args)
     result["reason"] = reason
     return result
 
 
 def _lifecycle_if_due(state: dict) -> dict | None:
-    every = _int_env("AUTO_CODEX_LIFECYCLE_EVERY_HOURS", DEFAULT_LIFECYCLE_EVERY_HOURS)
+    every = _int_env("CODENOMOUS_LIFECYCLE_EVERY_HOURS", DEFAULT_LIFECYCLE_EVERY_HOURS)
     if every <= 0:
         return None
     now = int(time.time())
@@ -126,12 +126,12 @@ def _lifecycle_if_due(state: dict) -> dict | None:
     if now - last < every * 3600:
         return None
     state["last_lifecycle_at"] = now
-    return _run_auto_codex(
+    return _run_codenomous(
         "lifecycle",
         "--maturity",
-        str(_int_env("AUTO_CODEX_MATURITY", 3)),
+        str(_int_env("CODENOMOUS_MATURITY", 3)),
         "--capacity",
-        str(_int_env("AUTO_CODEX_CAPACITY", 50)),
+        str(_int_env("CODENOMOUS_CAPACITY", 50)),
     )
 
 
@@ -156,7 +156,7 @@ def _count_skill(event: dict) -> dict:
     name = _skill_name(event)
     if not name:
         return {"counted": False, "reason": "missing_skill_name"}
-    return _run_auto_codex("count", name)
+    return _run_codenomous("count", name)
 
 
 def dispatch(event: dict) -> dict:
@@ -173,7 +173,7 @@ def dispatch(event: dict) -> dict:
     elif name == "Stop":
         stops = int(state.get("stop_count", 0)) + 1
         state["stop_count"] = stops
-        every = _int_env("AUTO_CODEX_SYNC_EVERY_STOPS", DEFAULT_SYNC_EVERY_STOPS)
+        every = _int_env("CODENOMOUS_SYNC_EVERY_STOPS", DEFAULT_SYNC_EVERY_STOPS)
         if every and stops % every == 0:
             results.append(_sync("stop", small=True))
     elif name == "PreCompact":
@@ -194,7 +194,7 @@ def main() -> int:
     except (json.JSONDecodeError, ValueError):
         event = {}
     verdict = dispatch(event)
-    if os.environ.get("AUTO_CODEX_HOOK_DEBUG") in {"1", "true", "TRUE"}:
+    if os.environ.get("CODENOMOUS_HOOK_DEBUG") in {"1", "true", "TRUE"}:
         print(json.dumps(verdict, ensure_ascii=False))
     return 0
 

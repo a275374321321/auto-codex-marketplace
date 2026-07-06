@@ -1,11 +1,11 @@
 ---
 name: adaptive-app-projects
-description: Reusable workflow for app, website, frontend, mobile, dashboard, game, or interactive tool projects that should adaptively learn from prior implementation, design, testing, build, and deployment sessions. Use when Codex starts or maintains an app-like project and should later create a project-specific skill via Auto Codex.
+description: Reusable workflow for app, website, frontend, mobile, dashboard, game, or interactive tool projects that should adaptively learn from prior implementation, design, testing, build, and deployment sessions. Use when Codex starts or maintains an app-like project and should later create a project-specific skill via Codenomous.
 ---
 
 # Adaptive App Projects
 
-Use this skill when a project involves building or maintaining an app, website, dashboard, mobile prototype, game, or interactive tool. Start with the repo's existing architecture and user-facing workflow, then let Auto Codex create a project-specific skill after patterns emerge.
+Use this skill when a project involves building or maintaining an app, website, dashboard, mobile prototype, game, or interactive tool. Start with the repo's existing architecture and user-facing workflow, then let Codenomous create a project-specific skill after patterns emerge.
 
 ## Default Workflow
 
@@ -14,7 +14,7 @@ Use this skill when a project involves building or maintaining an app, website, 
 3. Build the usable experience first, not a marketing shell, unless the request is explicitly for a landing page.
 4. Keep feature work scoped to the requested user journey, but include expected states such as loading, empty, error, disabled, success, and mobile layouts.
 5. Run available syntax, build, lint, test, or smoke checks. For visual or interactive work, verify the screen or asset renders as intended when tools are available.
-6. After the first meaningful implementation cycle, invoke Auto Codex to sync the trace and create or patch a project-specific app skill.
+6. After the first meaningful implementation cycle, invoke Codenomous to sync the trace and create or patch a project-specific app skill.
 
 ## Reusable Patterns
 
@@ -24,4 +24,4 @@ Use this skill when a project involves building or maintaining an app, website, 
 
 ## Auto-Learning Rule
 
-If the app project repeats across sessions or develops a stable product style, use `$auto-codex` to create a project-level skill that captures stack commands, design conventions, testing workflow, and known pitfalls.
+If the app project repeats across sessions or develops a stable product style, use `$codenomous` to create a project-level skill that captures stack commands, design conventions, testing workflow, and known pitfalls.

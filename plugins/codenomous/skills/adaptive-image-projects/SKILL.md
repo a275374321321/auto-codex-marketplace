@@ -1,6 +1,6 @@
 ---
 name: adaptive-image-projects
-description: Reusable workflow for image editing, photo retouching, p-tu/p图, thumbnails, product images, brand graphics, AI image generation/editing, batch asset preparation, and visual style projects that should adaptively learn via Auto Codex.
+description: Reusable workflow for image editing, photo retouching, p-tu/p图, thumbnails, product images, brand graphics, AI image generation/editing, batch asset preparation, and visual style projects that should adaptively learn via Codenomous.
 ---
 
 # Adaptive Image Projects
@@ -14,7 +14,7 @@ Use this skill when the user works on image editing, photo retouching, p-tu, pro
 3. Preserve originals. Write edited variants or generated assets to clearly named outputs.
 4. Match recurring visual style: composition, colors, typography, crop rules, watermark policy, product visibility, realism level, and retouching strength.
 5. For batch image work, test one representative image before processing the full set.
-6. After a visual style or asset workflow repeats, invoke Auto Codex to create or patch a project-specific image skill.
+6. After a visual style or asset workflow repeats, invoke Codenomous to create or patch a project-specific image skill.
 
 ## Reusable Patterns
 
@@ -24,4 +24,4 @@ Use this skill when the user works on image editing, photo retouching, p-tu, pro
 
 ## Auto-Learning Rule
 
-If image work repeats for a brand, store, campaign, creator, product catalog, or design style, use `$auto-codex` to learn the style and workflow into a project-level skill.
+If image work repeats for a brand, store, campaign, creator, product catalog, or design style, use `$codenomous` to learn the style and workflow into a project-level skill.

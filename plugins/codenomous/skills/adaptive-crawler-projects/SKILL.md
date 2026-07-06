@@ -1,11 +1,11 @@
 ---
 name: adaptive-crawler-projects
-description: Reusable workflow for crawler, scraping, data-enrichment, identity-verification, retry-only repair, checkpointed batch processing, and quality-control projects. Use when Codex starts or maintains a project similar to EPC verification crawlers, website enrichment, BBB/Yelp/ENF/SolarReviews-style source checks, or any recurring extraction pipeline that should adaptively learn via Auto Codex.
+description: Reusable workflow for crawler, scraping, data-enrichment, identity-verification, retry-only repair, checkpointed batch processing, and quality-control projects. Use when Codex starts or maintains a project similar to EPC verification crawlers, website enrichment, BBB/Yelp/ENF/SolarReviews-style source checks, or any recurring extraction pipeline that should adaptively learn via Codenomous.
 ---
 
 # Adaptive Crawler Projects
 
-Use this skill when a project has recurring crawler, scraping, enrichment, verification, or repair-pass patterns. Start with the local project context, then let Auto Codex create a project-specific skill after the first meaningful run.
+Use this skill when a project has recurring crawler, scraping, enrichment, verification, or repair-pass patterns. Start with the local project context, then let Codenomous create a project-specific skill after the first meaningful run.
 
 ## Default Workflow
 
@@ -14,7 +14,7 @@ Use this skill when a project has recurring crawler, scraping, enrichment, verif
 3. Preserve original identifiers and source fields unless the user explicitly requests overwrites. Prefer new fields such as `New xxx`, status columns, confidence columns, and notes.
 4. Treat search results and directory pages as leads. Fill verified fields only after source identity is supported by evidence such as phone, domain, address, city, ZIP, name, slug, or official-page links.
 5. Run one known-good row and one known-failure row before any full batch.
-6. After the first real run, invoke Auto Codex to sync the project trace and create or patch a project-specific skill.
+6. After the first real run, invoke Codenomous to sync the project trace and create or patch a project-specific skill.
 
 ## Reusable Patterns
 
@@ -26,4 +26,4 @@ Use this skill when a project has recurring crawler, scraping, enrichment, verif
 
 ## Auto-Learning Rule
 
-If the project repeats across more than one session or develops domain-specific source rules, use `$auto-codex` to create a project-level skill. Keep broadly reusable crawler practices here and put domain-specific evidence rules in the new project skill.
+If the project repeats across more than one session or develops domain-specific source rules, use `$codenomous` to create a project-level skill. Keep broadly reusable crawler practices here and put domain-specific evidence rules in the new project skill.

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codenomous"
+  short_description: "Automatic Codex skill learning"
+  default_prompt: "Use $codenomous to sync project history and distill durable Codex skill updates."

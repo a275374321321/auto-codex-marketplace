@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Auto Codex: deterministic writer for self-authored Codex skills.
+"""Codenomous: deterministic writer for self-authored Codex skills.
 
 The model proposes JSON intents. This script redacts evidence, validates shape,
 writes skills atomically, records ledgers, and archives only skills it created.
@@ -18,10 +18,10 @@ import time
 from pathlib import Path
 
 SKILL_FILE = "SKILL.md"
-SIDECAR = ".auto-codex.json"
+SIDECAR = ".codenomous.json"
 LEGACY_SIDECAR = ".codex-autoharness.json"
-CREATED_BY = "auto-codex"
-LEGACY_CREATED_BY = {"auto-codex", "codex-autoharness"}
+CREATED_BY = "codenomous"
+LEGACY_CREATED_BY = {"codenomous", "codex-autoharness"}
 LEDGER = ".ledger.jsonl"
 ALLOWED_DIRS = {"references", "templates", "scripts", "assets"}
 LAYERS = ("project", "global")
@@ -258,7 +258,7 @@ def promote(intent: dict, rs: dict[str, Path], repo_name: str | None = None) -> 
     try:
         layer, path, body = shape(intent, rs)
         if action != "create" and not is_self_authored(path):
-            raise ValueError("target is not self-authored by Auto Codex")
+            raise ValueError("target is not self-authored by Codenomous")
         if action in {"create", "update"} and not isinstance(body, str):
             raise ValueError(f"{action} requires body")
         if not (intent.get("reason") or "").strip() or not (intent.get("evidence") or "").strip():
@@ -299,7 +299,7 @@ def skill_index(rs: dict[str, Path]) -> str:
 
 def queue_path(run_id: str, rs: dict[str, Path]) -> Path:
     safe = re.sub(r"[^A-Za-z0-9_.-]", "_", run_id)
-    return rs["project"] / "auto-codex" / "intents" / f"{safe}.jsonl"
+    return rs["project"] / "codenomous" / "intents" / f"{safe}.jsonl"
 
 
 def cmd_index(args) -> int:
@@ -490,7 +490,7 @@ def cmd_sync(args) -> int:
     home = codex_home(args)
     sessions = home / "sessions"
     rs = roots(args)
-    state_dir = rs["project"] / "auto-codex"
+    state_dir = rs["project"] / "codenomous"
     state_path = state_dir / "sync_state.json"
     seen = {} if args.rescan else _load_seen(state_path)
     cutoff = time.time() - args.days * 86400
@@ -522,7 +522,7 @@ def cmd_sync(args) -> int:
     atomic_write(state_path, json.dumps(seen, indent=2, sort_keys=True))
     inbox = state_dir / "learning_inbox.md"
     lines = [
-        "# Auto Codex Learning Inbox",
+        "# Codenomous Learning Inbox",
         "",
         "Review these bundles with references/reflector.md, then promote at most one durable intent per bundle.",
         "",
@@ -535,9 +535,9 @@ def cmd_sync(args) -> int:
 
 
 def cmd_install_task(args) -> int:
-    script_dir = roots(args)["project"] / "auto-codex"
+    script_dir = roots(args)["project"] / "codenomous"
     script_dir.mkdir(parents=True, exist_ok=True)
-    script_path = script_dir / "run_auto_codex_sync.ps1"
+    script_path = script_dir / "run_codenomous_sync.ps1"
     py = Path(__file__).resolve()
     workspace = py.parents[2]
     project_state = workspace / ".codex"

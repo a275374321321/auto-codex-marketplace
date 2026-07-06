@@ -1,4 +1,4 @@
-# Auto Codex Skill Format
+# Codenomous Skill Format
 
 Generated skills are folders with `SKILL.md` and optional resources. The promoter validates these rules before writing.
 
@@ -27,7 +27,7 @@ Global skills must be repo-agnostic. If a lesson names a local path, workbook, p
 
 ## Self-Authored Boundary
 
-`create` stamps `.auto-codex.json`. `update`, `patch`, and `delete` are rejected unless that sidecar exists and says `created_by: auto-codex`. Legacy `.codex-autoharness.json` sidecars remain readable for migration.
+`create` stamps `.codenomous.json`. `update`, `patch`, and `delete` are rejected unless that sidecar exists and says `created_by: codenomous`. Legacy `.codex-autoharness.json` sidecars remain readable for migration.
 
 ## Auto-Sync Boundary
 

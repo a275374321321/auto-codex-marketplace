@@ -1,6 +1,6 @@
-# Auto Codex Reflector
+# Codenomous Reflector
 
-Distill a finished episode into at most one aligned skill change. Propose an intent; let `scripts/auto_codex.py` validate and write it.
+Distill a finished episode into at most one aligned skill change. Propose an intent; let `scripts/codenomous.py` validate and write it.
 
 ## Inputs
 

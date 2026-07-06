@@ -5,10 +5,10 @@
   },
   "plugins": [
     {
-      "name": "auto-codex",
+      "name": "codenomous",
       "source": {
         "source": "local",
-        "path": "./plugins/auto-codex"
+        "path": "./plugins/codenomous"
       },
       "policy": {
         "installation": "AVAILABLE",

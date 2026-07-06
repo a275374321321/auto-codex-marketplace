@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""MCP stdio server exposing Auto Codex learning-intent tools.
+"""MCP stdio server exposing Codenomous learning-intent tools.
 
-The server has no third-party dependencies. It stages intents into Auto Codex's
+The server has no third-party dependencies. It stages intents into Codenomous's
 queue and can drain that queue through the deterministic promoter.
 """
 from __future__ import annotations
@@ -18,11 +18,11 @@ sys.dont_write_bytecode = True
 
 
 PROTOCOL_VERSION = "2024-11-05"
-SERVER_NAME = "auto_codex_stage_skill"
+SERVER_NAME = "codenomous_stage_skill"
 SERVER_VERSION = "0.1.0"
 TOOL_STAGE = "stage_skill"
 TOOL_DRAIN = "drain_skill_intents"
-TOOL_STATUS = "auto_codex_status"
+TOOL_STATUS = "codenomous_status"
 ACTIONS = ("create", "update", "patch", "delete")
 BODY_ACTIONS = ("create", "update")
 
@@ -31,11 +31,11 @@ def _plugin_root() -> Path:
     return Path(__file__).resolve().parents[1]
 
 
-def _load_auto_codex():
-    path = _plugin_root() / "skills" / "auto-codex" / "scripts" / "auto_codex.py"
-    spec = importlib.util.spec_from_file_location("auto_codex_runtime", path)
+def _load_codenomous():
+    path = _plugin_root() / "skills" / "codenomous" / "scripts" / "codenomous.py"
+    spec = importlib.util.spec_from_file_location("codenomous_runtime", path)
     if spec is None or spec.loader is None:
-        raise RuntimeError(f"cannot load Auto Codex runtime from {path}")
+        raise RuntimeError(f"cannot load Codenomous runtime from {path}")
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     return module
@@ -58,7 +58,7 @@ def _roots(runtime) -> dict[str, Path]:
 
 
 def _run_id(raw: str | None = None) -> str:
-    value = raw or os.environ.get("AUTO_CODEX_RUN_ID") or f"mcp-{int(time.time())}"
+    value = raw or os.environ.get("CODENOMOUS_RUN_ID") or f"mcp-{int(time.time())}"
     return re.sub(r"[^A-Za-z0-9_.-]", "_", value)[:120] or "mcp"
 
 
@@ -119,7 +119,7 @@ def _intent(params: dict) -> dict:
 
 
 def stage_skill(params: dict) -> dict:
-    runtime = _load_auto_codex()
+    runtime = _load_codenomous()
     errors = _schema_errors(params)
     if errors:
         return {"ok": False, "errors": errors}
@@ -142,7 +142,7 @@ def stage_skill(params: dict) -> dict:
 
 
 def drain_skill_intents(params: dict) -> dict:
-    runtime = _load_auto_codex()
+    runtime = _load_codenomous()
     rs = _roots(runtime)
     run_id = _run_id(params.get("run_id"))
     q = runtime.queue_path(run_id, rs)
@@ -159,9 +159,9 @@ def drain_skill_intents(params: dict) -> dict:
 
 
 def status(_: dict) -> dict:
-    runtime = _load_auto_codex()
+    runtime = _load_codenomous()
     rs = _roots(runtime)
-    inbox = rs["project"] / "auto-codex" / "learning_inbox.md"
+    inbox = rs["project"] / "codenomous" / "learning_inbox.md"
     return {
         "ok": True,
         "project_root": str(rs["project"]),
@@ -176,7 +176,7 @@ def _tools() -> list[dict]:
     return [
         {
             "name": TOOL_STAGE,
-            "description": "Stage one Auto Codex skill-change intent. This appends to a queue and never writes live skills directly.",
+            "description": "Stage one Codenomous skill-change intent. This appends to a queue and never writes live skills directly.",
             "inputSchema": {
                 "type": "object",
                 "properties": {
@@ -196,7 +196,7 @@ def _tools() -> list[dict]:
         },
         {
             "name": TOOL_DRAIN,
-            "description": "Promote staged Auto Codex intents through the deterministic validator/writer.",
+            "description": "Promote staged Codenomous intents through the deterministic validator/writer.",
             "inputSchema": {
                 "type": "object",
                 "properties": {
@@ -206,7 +206,7 @@ def _tools() -> list[dict]:
         },
         {
             "name": TOOL_STATUS,
-            "description": "Show Auto Codex roots, inbox status, and current learned skill index.",
+            "description": "Show Codenomous roots, inbox status, and current learned skill index.",
             "inputSchema": {"type": "object", "properties": {}}
         }
     ]
