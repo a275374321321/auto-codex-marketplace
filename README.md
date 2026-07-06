@@ -1,4 +1,4 @@
-<h1 align="center">Auto Codex</h1>
+<h1 align="center">codenomous</h1>
 
 <p align="center">
   <img src="https://img.shields.io/badge/release-v0.2.1-brightgreen.svg" alt="release" />
