@@ -1,4 +1,4 @@
-<h1 align="center">codenomous</h1>
+<h1 align="center">Codenomous</h1>
 
 <p align="center">
   <img src="https://img.shields.io/badge/release-v0.2.1-brightgreen.svg" alt="release" />
@@ -7,7 +7,7 @@
   <img src="https://img.shields.io/badge/license-MIT-yellow.svg" alt="license MIT" />
 </p>
 
-**Auto Codex is a self-learning skill layer for Codex.** It turns real project
+**Codenomous is a self-learning skill layer for Codex.** It turns real project
 sessions into reusable Codex skills, keeps similar lessons consolidated, tracks
 which learned skills are actually used, and archives stale self-authored skills
 without touching anything you wrote by hand.
