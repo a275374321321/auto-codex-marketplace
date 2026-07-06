@@ -1,5 +1,6 @@
 .codex/
 __pycache__/
 *.pyc
+gcm-diagnose.log
 .DS_Store
 Thumbs.db
