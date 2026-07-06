@@ -1,7 +1,7 @@
 {
-  "name": "auto-codex-public",
+  "name": "codenomous",
   "interface": {
-    "displayName": "Auto Codex"
+    "displayName": "Codenomous"
   },
   "plugins": [
     {

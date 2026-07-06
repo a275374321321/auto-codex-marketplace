@@ -3,7 +3,7 @@
 Auto Codex packages adaptive Codex skills, lifecycle hooks, and an MCP staging
 server for self-learning skill maintenance.
 
-Install the marketplace from the repository root:
+Install the **Codenomous** marketplace from the repository root:
 
 ```bash
 codex plugin marketplace add a275374321321/auto-codex-marketplace

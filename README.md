@@ -12,7 +12,7 @@ sessions into reusable Codex skills, keeps similar lessons consolidated, tracks
 which learned skills are actually used, and archives stale self-authored skills
 without touching anything you wrote by hand.
 
-It is packaged as a Codex plugin marketplace: install the marketplace once,
+It is packaged in the **Codenomous** Codex plugin marketplace: install the marketplace once,
 enable **Auto Codex** in the Codex app, trust its hooks, and future Codex
 sessions can sync project history, prepare learning bundles, expose MCP tools
 for safe skill staging, and apply learned skills when similar work appears.
@@ -33,7 +33,7 @@ Requires `python` on your PATH. Auto Codex uses only the Python standard library
 codex plugin marketplace add a275374321321/auto-codex-marketplace
 ```
 
-Then open the Codex app plugin directory, choose the **Auto Codex** marketplace,
+Then open the Codex app plugin directory, choose the **Codenomous** marketplace,
 and install **Auto Codex**.
 
 After installing:
@@ -155,7 +155,7 @@ Environment variables:
 Remove the marketplace from Codex:
 
 ```bash
-codex plugin marketplace remove auto-codex-public
+codex plugin marketplace remove codenomous
 ```
 
 Uninstalling the plugin stops hooks and MCP tooling. Learned skills and Auto
