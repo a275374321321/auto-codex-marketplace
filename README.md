@@ -30,7 +30,7 @@ for safe skill staging, and apply learned skills when similar work appears.
 Requires `python` on your PATH. Codenomous uses only the Python standard library.
 
 ```bash
-codex plugin marketplace add a275374321321/codenomous
+codex plugin marketplace add gigaALai/Codenomous
 ```
 
 Then open the Codex app plugin directory, choose the **Codenomous** marketplace,

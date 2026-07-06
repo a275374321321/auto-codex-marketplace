@@ -6,7 +6,7 @@ server for self-learning skill maintenance.
 Install the **Codenomous** marketplace from the repository root:
 
 ```bash
-codex plugin marketplace add a275374321321/codenomous
+codex plugin marketplace add gigaALai/Codenomous
 ```
 
 Then install **Codenomous** from the Codex app plugin directory and trust its
