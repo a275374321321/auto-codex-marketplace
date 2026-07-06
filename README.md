@@ -158,8 +158,8 @@ Remove the marketplace from Codex:
 codex plugin marketplace remove codenomous
 ```
 
-Uninstalling the plugin stops hooks and MCP tooling. Learned skills and Auto
-Codex state remain in your project or user skill folders. Remove only
+Uninstalling the plugin stops hooks and MCP tooling. Learned skills and
+Codenomous state remain in your project or user skill folders. Remove only
 self-authored skills that carry `.codenomous.json` with `created_by:
 codenomous`.
 
